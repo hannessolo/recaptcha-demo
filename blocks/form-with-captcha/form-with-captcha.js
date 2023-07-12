@@ -2,7 +2,7 @@ import { loadScript } from '../../scripts/lib-franklin.js';
 
 /* global grecaptcha */
 
-const submissionEndpoint = 'https://53444-834roserabbit-stage.adobeioruntime.net/api/v1/web/block-party-demo/newsletter';
+const submissionEndpoint = 'https://53444-834roserabbit-stage.adobeioruntime.net/api/v1/web/block-party-demo/submit';
 
 function validateFields(form) {
   // Check all fields have a value entered

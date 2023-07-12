@@ -4,7 +4,7 @@ application:
     packages:
       block-party-demo:
         actions:
-          newsletter:
+          submit:
             function: actions/handle-submit/index.js
             web: 'yes'
             runtime: 'nodejs:14'

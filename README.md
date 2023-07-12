@@ -3,6 +3,14 @@ Demo for franklin [block party](https://www.hlx.live/developer/block-collection#
 
 This uses [reCaptcha v2](https://developers.google.com/recaptcha/docs/display) to verify that a user submitting a form is not a bot.
 
+The form at the demo url submits to `https://53444-834roserabbit-stage.adobeioruntime.net/api/v1/web/block-party-demo/submit`. You can test that the request is rejected if the token is not set or wrong using curl:
+
+```
+curl --header "Content-Type: application/json" -X POST --data '{ "field-1": "hello", "g-recaptcha-response": "abc" }' -i https://53444-834roserabbit-stage.adobeioruntime.net/api/v1/web/block-party-demo/submit
+```
+
+However, submitting via the browser using the reCaptcha the response is 200.
+
 ## Environments
 - Preview: https://main--recaptcha-demo--hannessolo.hlx.page/
 - Live: https://main--recaptcha-demo--hannessolo.hlx.live/
