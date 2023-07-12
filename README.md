@@ -1,9 +1,9 @@
-# Your Project's Title...
-Your project's description...
+# Recaptcha Franklin D
+Demo for franklin [block party](https://www.hlx.live/developer/block-collection#block-party) for integrating Google ReCaptcha with franklin websites.
 
 ## Environments
-- Preview: https://main--{repo}--{owner}.hlx.page/
-- Live: https://main--{repo}--{owner}.hlx.live/
+- Preview: https://main--recaptcha-demo--hannessolo.hlx.page/
+- Live: https://main--recaptcha-demo--hannessolo.hlx.live/
 
 ## Installation
 
