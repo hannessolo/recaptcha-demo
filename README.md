@@ -1,4 +1,4 @@
-# Recaptcha Franklin D
+# Recaptcha Franklin Demo
 Demo for franklin [block party](https://www.hlx.live/developer/block-collection#block-party) for integrating Google ReCaptcha with franklin websites.
 
 ## Environments
