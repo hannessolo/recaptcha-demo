@@ -2,6 +2,8 @@ import { loadScript } from '../../scripts/lib-franklin.js';
 
 /* global grecaptcha */
 
+const submissionEndpoint = 'https://53444-834roserabbit-stage.adobeioruntime.net/api/v1/web/block-party-demo/newsletter';
+
 function validateFields(form) {
   // Check all fields have a value entered
   return [...form.querySelectorAll('input[type="text"]')].reduce((validSoFar, input) => {
@@ -19,15 +21,18 @@ function validateFields(form) {
 }
 
 function executeFormSubmission(form, token, handleSubmitError) {
+  // This object automatically contains the field g-recaptcha-response that the server verifies
+  // If not using formData, the response token can also be accessed explicitly in the token param
   const formData = new FormData(form);
 
-  fetch('/todo', {
+  fetch(submissionEndpoint, {
     method: 'POST',
     headers: {
-      'x-recaptcha-token': token,
-      'Content-Type': 'multipart/form-data',
+      'Content-Type': 'application/json',
     },
-    body: formData,
+    body: JSON.stringify({
+      ...Object.fromEntries(formData),
+    }),
   }).then((res) => {
     if (res.ok) {
       window.location = '/success';
