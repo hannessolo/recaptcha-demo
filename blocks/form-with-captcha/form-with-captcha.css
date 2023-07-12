@@ -1,0 +1,12 @@
+.block.form-with-captcha #error-outlet {
+  background: var(--error-color);
+  color: white;
+  padding: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+}
+
+.block.form-with-captcha #error-outlet:empty {
+  display: none;
+}
