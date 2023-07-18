@@ -1,15 +1,14 @@
 # Recaptcha Franklin Demo
-Demo for franklin [block party](https://www.hlx.live/developer/block-collection#block-party) for integrating Google ReCaptcha with franklin websites.
+Demo of submission to the [franklin form service](!https://www.hlx.live/developer/forms) using a captcha, integrated directly into the forms pipeline.
 
-This uses [reCaptcha v2](https://developers.google.com/recaptcha/docs/display) to verify that a user submitting a form is not a bot.
+To do so, you must configure the `.helix/config` folder in the content with the folowint values:
 
-The form at the demo url submits to `https://53444-834roserabbit-stage.adobeioruntime.net/api/v1/web/block-party-demo/submit`. You can test that the request is rejected if the token is not set or wrong using curl:
+| key            | value        |
+|----------------|--------------|
+| captcha.secret | xyz          |
+| captcha.type   | reCaptcha v2 |
 
-```
-curl --header "Content-Type: application/json" -X POST --data '{ "field-1": "hello", "g-recaptcha-response": "abc" }' -i https://53444-834roserabbit-stage.adobeioruntime.net/api/v1/web/block-party-demo/submit
-```
-
-However, submitting via the browser using the reCaptcha the response is 200.
+Only reCaptcha v2 is supported.
 
 ## Environments
 - Preview: https://main--recaptcha-demo--hannessolo.hlx.page/
@@ -34,24 +33,3 @@ npm run lint
 1. Install the [Helix CLI](https://github.com/adobe/helix-cli): `npm install -g @adobe/helix-cli`
 1. Start Franklin Proxy: `hlx up` (opens your browser at `http://localhost:3000`)
 1. Open the `{repo}` directory in your favorite IDE and start coding :)
-
-
-# Deploying Example Backend Action
-
-The backend example is handled through a [IO run time](https://developer.adobe.com/runtime) action.
-
-To deploy:
-
-1. Ensure you have access to Adobe IO Run Time
-2. Install the AIO CLI tool: `npm install -g @adobe/aio-cli`
-3. Set up a workspace by signing in to [the developer console](https://developer.adobe.com/console). Select create new project from template, adn select the App Builder template. Follow the instructions on screen.
-4. In the directory `app-builder`, run `aio app use`. This will ask you to sign in. Then you can choose your previously created workspace in the interactive cli. Overwrite both the `.aio` and `.env` files.
-5. Open the `.env` file and append the following config values, obtained from your google account:
-
-```
-CAPTCHA_SECRET_KEY=<value>
-CAPTCHA_SITE_KEY=<value>
-```
-
-6. Run `aio app deploy` to deploy the action.
-7. This will return the URL of the deployed action. Copy this value. Open the `configs.xlsx` spreadsheet from sharepoint. Update the value `newsletter-endpoint` to the correct endpoint. Update the value `captcha-site-key` to the same value as in the `.env` file.
