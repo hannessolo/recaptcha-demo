@@ -2,7 +2,7 @@ import { loadScript } from '../../scripts/lib-franklin.js';
 
 /* global grecaptcha */
 
-const submissionEndpoint = 'https://53444-834roserabbit-stage.adobeioruntime.net/api/v1/web/block-party-demo/submit';
+const submissionEndpoint = '/form-submissions';
 
 function validateFields(form) {
   // Check all fields have a value entered
@@ -31,7 +31,9 @@ function executeFormSubmission(form, token, handleSubmitError) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      ...Object.fromEntries(formData),
+      data: {
+        ...Object.fromEntries(formData),
+      },
     }),
   }).then((res) => {
     if (res.ok) {
@@ -46,8 +48,10 @@ export default function decorate(block) {
   block.innerHTML = `
     <form>
         <div id="error-outlet"></div>
-        <label for="field-1">Enter some text</label>
-        <input type="text" name="field-1" />
+        <label for="name">Enter your name</label>
+        <input type="text" name="name" />
+        <label for="message">Enter a message to submit</label>
+        <input type="text" name="message" />
         <button type="submit">Submit</button>
         <div id="recaptcha-placeholder"></div>
     </form>
